@@ -13,7 +13,7 @@ import {
   TextInput,
 } from 'react-admin';
 
-export const RoleList = props => (
+export const list = props => (
   <List {...props} bulkActionButtons={false}>
     <Datagrid rowClick="edit">
       <TextField source="name" />
@@ -21,15 +21,13 @@ export const RoleList = props => (
       <ArrayField source="permissions">
         <SingleFieldList><ChipField source="methods" /></SingleFieldList>
       </ArrayField>
-      <DateField source="createdAt" showTime />
-      <TextField source="createdBy" />
       <DateField source="lastModifiedAt" showTime />
       <TextField source="lastModifiedBy" />
     </Datagrid>
   </List>
 );
 
-export const RoleEdit = props => (
+export const edit = props => (
   <Edit mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextField source="name" />
@@ -38,9 +36,7 @@ export const RoleEdit = props => (
         <SingleFieldList><ChipField source="methods" />
       </SingleFieldList></ArrayField>
       <DateField source="createdAt" showTime disabled />
-      <ReferenceField source="createdBy" reference="users">
-          <TextField source="createdBy" />
-      </ReferenceField>
+      <TextField source="createdBy" />
       <TextField source="createdBy" />
       <DateField source="lastModifiedAt" showTime />
       <TextField source="lastModifiedBy" />
@@ -48,7 +44,7 @@ export const RoleEdit = props => (
   </Edit>
 );
 
-export const RoleCreate = props => (
+export const create = props => (
   <Create mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextInput source="name" />

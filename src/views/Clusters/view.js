@@ -14,24 +14,22 @@ import {
   TextField,
   TextInput,
 } from 'react-admin';
-import { AttributesField } from './misc.js'
+import { AttributesField } from '../misc.js'
 
-export const ClusterList = props => (
+export const list = props => (
   <List {...props} bulkActionButtons={false}>
     <Datagrid rowClick="edit">
-        <TextField source="name" />
-        <TextField source="displayName" />
-        <AttributesField source="attributes"/>
-        <DateField source="createdAt" showTime/>
-        <DateField source="createdBy" />
-        <DateField source="lastModifiedAt" showTime/>
-        <TextField source="LastModifiedBy" />
+      <TextField source="name" />
+      <TextField source="displayName" />
+      <AttributesField source="attributes"/>
+      <DateField source="lastModifiedAt" showTime/>
+      <TextField source="LastModifiedBy" />
     </Datagrid>
   </List>
   );
 //  <ArrayField source="attributes"><SingleFieldList><ChipField source="name" /></SingleFieldList></ArrayField>
 
-export const ClusterEdit = props => (
+export const edit = props => (
   <Edit mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextField source="name" />
@@ -57,7 +55,7 @@ export const ClusterEdit = props => (
   </Edit>
 );
 
-export const ClusterCreate = props => (
+export const create = props => (
   <Create mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextInput source="name" />

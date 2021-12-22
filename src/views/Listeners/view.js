@@ -12,9 +12,9 @@ import {
   TextField,
   TextInput,
 } from 'react-admin';
-import { SimpleArray } from './misc.js'
+import { SimpleArray } from '../misc.js'
 
-export const ListenerList = props => (
+export const list = props => (
 <List {...props} bulkActionButtons={false}>
   <Datagrid rowClick="edit">
     <TextField source="name" />
@@ -23,15 +23,13 @@ export const ListenerList = props => (
     <NumberField source="port" />
     <TextField source="routeGroup" />
     <TextField source="policies" />
-    <DateField source="createdAt" showTime />
-    <DateField source="createdBy" />
     <DateField source="lastModifiedAt" showTime />
     <TextField source="LastModifiedBy" />
   </Datagrid>
 </List>
 );
 
-export const ListenerEdit = props => (
+export const edit = props => (
   <Edit mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextField source="name" />
@@ -52,7 +50,7 @@ export const ListenerEdit = props => (
   </Edit>
 );
 
-export const ListenerCreate = props => (
+export const create = props => (
   <Create mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextInput source="name" />

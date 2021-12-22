@@ -15,9 +15,9 @@ import {
   TextField,
   TextInput,
 } from 'react-admin';
-import { AttributesField } from './misc.js'
+import { AttributesField } from '../misc.js'
 
-export const RouteList = props => (
+export const list = props => (
   <List {...props} bulkActionButtons={false}>
     <Datagrid rowClick="edit">
       <TextField source="name" />
@@ -26,8 +26,6 @@ export const RouteList = props => (
       <TextField source="pathType" />
       <TextField source="routeGroup" />
       <AttributesField source="attributes"/>
-      <DateField source="createdAt" showTime />
-      <DateField source="createdBy" />
       <DateField source="lastModifiedAt" showTime />
       <TextField source="LastModifiedBy" />
     </Datagrid>
@@ -35,7 +33,7 @@ export const RouteList = props => (
 );
 // <ArrayField source="attributes"><SingleFieldList><TextField source="name" /></SingleFieldList></ArrayField>
 
-export const RouteEdit = props => (
+export const edit = props => (
   <Edit mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextInput source="name" />
@@ -44,7 +42,7 @@ export const RouteEdit = props => (
       <RadioButtonGroupInput source="pathType" choices={pathTypeChoices} />
       <TextInput source="routeGroup" />
       <ArrayInput source="attributes">
-      <SimpleFormIterator>
+        <SimpleFormIterator>
           <AutocompleteInput source="name" label="name" choices={knownAttributesName}
             onCreate={() => {
               const newAttributePrompt = prompt('Enter a new attribute name');
@@ -64,7 +62,7 @@ export const RouteEdit = props => (
   </Edit>
 );
 
-export const RouteCreate = props => (
+export const create = props => (
   <Create mutationMode="pessimistic" {...props}>
     <SimpleForm>
       <TextInput source="name" />
@@ -90,9 +88,9 @@ export const RouteCreate = props => (
 );
 
 const pathTypeChoices = [
-  { id: 'path', name: 'path' },
-  { id: 'prefix', name: 'prefix' },
-  { id: 'regexp', name: 'regexp' },
+  { id: 'path', name: 'Path' },
+  { id: 'prefix', name: 'Prefix' },
+  { id: 'regexp', name: 'Regexp' },
 ];
 
 var knownAttributesName = [
